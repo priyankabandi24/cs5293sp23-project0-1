@@ -25,7 +25,7 @@
 
 import os
 import pytest
-from project0.GPTmain import extract_info_from_pdf
+from project0.main import extract_info_from_pdf
 
 @pytest.fixture
 def pdf_file_path():
