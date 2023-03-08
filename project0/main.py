@@ -67,8 +67,7 @@ def insert_info_to_db(info):
     results = cursor.fetchall()
     for row in results:
         print(row[0], "|", row[1])
-    #filename = download_pdf(url)
-    #info = extract_info_from_pdf(filename)
+  
 
 if __name__ == "__main__":
     url = "https://www.normanok.gov/sites/default/files/documents/2022-10/2022-10-06_daily_incident_summary.pdf"
@@ -85,16 +84,4 @@ if __name__ == "__main__":
 
 
 
-# conn = sqlite3.connect('incidents.db')
-# c = conn.cursor()
-# c.execute('''CREATE TABLE incidents
-#              (date_time text, incident_number text, nature text, location text, origin text)''')
-# def insert_info_to_db(conn, info):
-#     c = conn.cursor()
-#     for incident in info:
-#         c.execute("INSERT INTO incidents VALUES (?, ?, ?, ?, ?)",
-#                   (incident['date_time'], incident['incident_number'], incident['nature'], incident['location'], incident['origin']))
-#     conn.commit()
-#  filename = download_pdf(url)
-#  info = extract_info_from_pdf(filename)
-#  insert_info_to_db(conn, info)
+
