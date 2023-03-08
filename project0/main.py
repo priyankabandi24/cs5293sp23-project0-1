@@ -4,7 +4,7 @@ import re
 import os
 import sqlite3
 from datetime import datetime
-
+import argparse
 
 def download_pdf(url):
     """Downloads a PDF file from a URL and returns the filename."""
@@ -67,21 +67,22 @@ def insert_info_to_db(info):
     results = cursor.fetchall()
     for row in results:
         print(row[0], "|", row[1])
-  
+    #filename = download_pdf(url)
+    #info = extract_info_from_pdf(filename)
 
 if __name__ == "__main__":
-    url = "https://www.normanok.gov/sites/default/files/documents/2022-10/2022-10-06_daily_incident_summary.pdf"
-    try:
-        filename = download_pdf(url)
+    #url = "https://www.normanok.gov/sites/default/files/documents/2022-10/2022-10-06_daily_incident_summary.pdf"
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--incidents", type=str, required=True, 
+                         help="Incident summary url.")
+     
+    args = parser.parse_args()
+    if args.incidents:
+        #main(args.incidents)
+        filename = download_pdf(args.incidents)
         info = extract_info_from_pdf(filename)
  #       for i, incident in enumerate(info):
   #          print(f"Incident {i+1}:")
    #         for k, v in incident.items():
     #            print(f"  {k}: {v}")
         insert_info_to_db(info)
-    except Exception as e:
-        print(f"Error: {e}")
-
-
-
-
